@@ -1,0 +1,1 @@
+worker: python rso_help_telebot.py
