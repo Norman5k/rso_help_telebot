@@ -33,7 +33,7 @@ class Keyboards:
 
     def set_inline_btn(self, item, category):
         """
-        Метод создает и возвращает инлайн кнопку по входным параметрам
+        Метод создает и возвращает inline-кнопку по входным параметрам
         :param item: Индекс кнопки
         :param category: Словарь категории отходов
         :return: Сконфигурированная кнопка типа InlineKeyboardButton
@@ -43,7 +43,7 @@ class Keyboards:
 
     def set_inline_menu(self, category):
         """
-        Метод создает разметку инлайн кнопок в выбранной категории отходов и возвращает разметку
+        Метод создает разметку inline-кнопок в выбранной категории отходов и возвращает её
         :param category: Словарь категории отходов
         :return: Сконфигурированная клавиатура типа InlineKeyboardMarkup
         """
@@ -59,7 +59,7 @@ class Keyboards:
         на пост во вспомогательном Telegram-канале
         :param item: Индекс кнопки
         :param category: Словарь категории отходов
-        :return: url необходимого поста вспомогательного Telegram-канала
+        :return: URL необходимого поста вспомогательного Telegram-канала
         """
         if category == GLASS_ACCEPTED_LIST:
             return GLASS_ACCEPTED_PICTURES[item]
@@ -82,7 +82,7 @@ class Keyboards:
 
     def main_menu(self):
         """
-        Метод создает разметку кнопок в основном меню и возвращает разметку
+        Метод создает разметку кнопок в главном меню и возвращает её
         :return: Сконфигурированная клавиатура типа ReplyKeyboardMarkup
         """
         self.markup = ReplyKeyboardMarkup(True, True)
@@ -107,7 +107,7 @@ class Keyboards:
         self.markup.row(bulb_button, about_us_button)
         return self.markup
 
-    def about_us_and_settings_menu(self):
+    def about_us_menu(self):
         """
         Метод создает разметку кнопок в меню about_us и settings
         :return: Сконфигурированная клавиатура типа ReplyKeyboardMarkup

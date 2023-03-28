@@ -31,7 +31,7 @@ class TextHandler(Handler):
         self.bot.send_message(message.chat.id,
                               MESSAGES['info_about'],
                               parse_mode="HTML",
-                              reply_markup=self.keyboards.about_us_and_settings_menu())
+                              reply_markup=self.keyboards.about_us_menu())
 
     def pressed_btn_back(self, message):
         """
@@ -92,16 +92,6 @@ class TextHandler(Handler):
                               parse_mode="HTML",
                               reply_markup=self.keyboards.bulb_menu())
 
-    def pressed_btn_battery(self, message):
-        """
-        Метод обрабатываем входящие текстовые сообщения от нажатий на кнопку "Стекло"
-        :param message: Входящее сообщение
-        """
-        self.bot.send_message(message.chat.id,
-                              MESSAGES['start_category'],
-                              parse_mode="HTML",
-                              reply_markup=self.keyboards.battery_menu())
-
     def pressed_btn_tetrapak(self, message):
         """
         Метод обрабатываем входящие текстовые сообщения от нажатий на кнопку "Стекло"
@@ -111,6 +101,15 @@ class TextHandler(Handler):
                               MESSAGES['start_category'],
                               parse_mode="HTML",
                               reply_markup=self.keyboards.tetrapak_menu())
+    def pressed_btn_battery(self, message):
+        """
+        Метод обрабатываем входящие текстовые сообщения от нажатий на кнопку "Стекло"
+        :param message: Входящее сообщение
+        """
+        self.bot.send_message(message.chat.id,
+                              MESSAGES['start_category'],
+                              parse_mode="HTML",
+                              reply_markup=self.keyboards.battery_menu())
 
     # _____________________________Обработка кнопок в категории "Cтекло"______________________________
 
@@ -186,7 +185,7 @@ class TextHandler(Handler):
         :param message: Входящее сообщение
         """
         self.bot.send_message(message.chat.id,
-                              MESSAGES['rejected_glass'],
+                              MESSAGES['rejected_paper'],
                               parse_mode="HTML",
                               reply_markup=self.keyboards.set_inline_menu(PAPER_REJECTED_LIST))
 
@@ -462,10 +461,10 @@ class TextHandler(Handler):
     def search_nearest_point(self, message, tag):
         """
         Метод ищет координаты ближайшей точки сбора выбранного вида отходов
-        с помощью GET-запросов к 2Гis Places API.
-        Всего 2Гис позволяет обработать 5 страниц запроса, то есть, 50 ближжайших точек.
+        с помощью GET-запросов к 2ГИС Places API.
+        Всего 2ГИС позволяет обработать 5 страниц запроса, то есть, 50 ближжайших точек.
         :param message: Входящее сообщение
-        :param tag: Вид отхода
+        :param tag: Вид отходов
         """
         # Радиус поиска
         radius = 300
@@ -535,9 +534,9 @@ class TextHandler(Handler):
 
     def has_necessary_filter(self, result, tag):
         """
-        Метод поиска необходимой категории мусора в JSON-ответе от 2Гис Places API
-        :param result: JSON-ответ от 2Гис Places API
-        :param tag: Искомый вид отхода
+        Метод поиска необходимой категории мусора в JSON-ответе от 2ГИС Places API
+        :param result: JSON-ответ от 2ГИС Places API
+        :param tag: Вид отходов
         :return: True - если тег найден, False - не найден
         """
         for attrs_dicts in result['result']['filters']['attributes']:
